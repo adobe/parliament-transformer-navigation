@@ -81,7 +81,6 @@ const onCreateNode = async (
 exports.setFieldsOnGraphQLNodeType = ({ type }) => {
   const { name, nodes } = type
   if (name === "ParliamentNavigation") {
-    console.log(JSON.stringify(nodes))
     return reduceGraphQLToJson(nodes)
   }
 }
