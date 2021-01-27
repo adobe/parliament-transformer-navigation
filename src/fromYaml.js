@@ -39,6 +39,30 @@ const convertPages = (pages) => {
   return convertedPages
 }
 
+
+/**
+ * Get the first defined path from a navigation tree structure.
+ * This search is breadth first.
+ *
+ * @param {Object[]} pages A nested list of page objects
+ *
+ * @returns {String} The first defined path value encountered.
+ */
+const getHomePage = pages => {
+  let found = pages.find(page => {
+    return page.path !== undefined
+  })
+
+  if (!found) {
+    pages.some(page => {
+      found = getHomePage(page.pages)
+      return found
+    })
+  }
+
+  return found.path
+}
+
 /**
  * A utility function for converting navigation data from a yaml file
  * into data for a parliamentNavigation GraphQL node object.
@@ -58,13 +82,19 @@ const fromYaml = (content) => {
     }
 
     const { order, title, name, url, pages } = object
+    const convertedPages = convertPages(pages)
 
+    let homePage = url
+    if (!homePage || homePage === undefined || homePage === '/') {
+      homePage = getHomePage(convertedPages)
+    }
+    
     return {
       section: name,
       title: title,
-      homePage: url,
+      homePage: homePage,
       order: order,
-      pages: convertPages(pages),
+      pages: convertedPages,
     }
   } catch (error) {
     //We should probably do something with the error
