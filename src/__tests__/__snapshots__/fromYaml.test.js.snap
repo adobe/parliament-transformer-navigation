@@ -42,3 +42,46 @@ Object {
   "title": "About",
 }
 `;
+
+exports[`Valid navigation yaml format without homepage 1`] = `
+Object {
+  "homePage": "/",
+  "order": 1,
+  "pages": Array [
+    Object {
+      "pages": Array [],
+      "path": "/",
+      "title": "Home",
+    },
+    Object {
+      "pages": Array [
+        Object {
+          "pages": Array [
+            Object {
+              "pages": Array [],
+              "path": "/nested/page/",
+              "title": "Nest a page",
+            },
+          ],
+          "path": "/example/",
+          "title": "Example",
+        },
+      ],
+      "path": "/page-2/",
+      "title": "Page 2",
+    },
+    Object {
+      "pages": Array [],
+      "path": "/diagrams/",
+      "title": "Diagrams",
+    },
+    Object {
+      "pages": Array [],
+      "path": "/hello/",
+      "title": "Hello World",
+    },
+  ],
+  "section": "section-1",
+  "title": "About",
+}
+`;
