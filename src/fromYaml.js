@@ -9,6 +9,7 @@
  *  OF ANY KIND, either express or implied. See the License for the specific language
  *  governing permissions and limitations under the License.
  */
+const { stripManifestPath } = require('./ManifestUtils')
 
 const yamlParser = require("yaml")
 
@@ -22,7 +23,7 @@ const yamlParser = require("yaml")
  *
  * @returns {Object[]} A converted array
  */
-const convertPages = (pages) => {
+const convertPages = (pages, gitRepoInfo) => {
   if (pages === undefined) {
     return []
   }
@@ -31,8 +32,8 @@ const convertPages = (pages) => {
 
     return {
       title: title,
-      path: url,
-      pages: convertPages(subPages),
+      path: stripManifestPath(url, gitRepoInfo),
+      pages: convertPages(subPages, gitRepoInfo),
     }
   })
 
@@ -73,7 +74,7 @@ const getHomePage = pages => {
  *
  * @return {Object} The main data for a GraphQL node object
  */
-const fromYaml = (content) => {
+const fromYaml = (content, gitRepoInfo) => {
   try {
     const object = yamlParser.parse(content)
 
@@ -82,7 +83,7 @@ const fromYaml = (content) => {
     }
 
     const { order, title, name, url, pages } = object
-    const convertedPages = convertPages(pages)
+    const convertedPages = convertPages(pages, gitRepoInfo)
 
     let homePage = url
     if (!homePage || homePage === undefined || homePage === '/') {

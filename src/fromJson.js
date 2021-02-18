@@ -20,7 +20,9 @@
  *
  * @returns {Object[]} A converted array
  */
-const convertPages = pages => {
+const { stripManifestPath } = require('./ManifestUtils')
+
+const convertPages = (pages, gitRepoInfo) => {
   if (pages === undefined) {
     return []
   }
@@ -28,8 +30,8 @@ const convertPages = pages => {
   const convertedPages = pages.map(page => {
     return {
       title: page.title,
-      path: page.path,
-      pages: convertPages(page.pages),
+      path: stripManifestPath(page.path, gitRepoInfo),
+      pages: convertPages(page.pages, gitRepoInfo),
     }
   })
 
@@ -68,7 +70,7 @@ const getHomePage = pages => {
  *
  * @return {Object} The main data for a GraphQL node object
  */
-const fromJson = content => {
+const fromJson = (content, gitRepoInfo) => {
   if (content === "") return
 
   try {
@@ -80,7 +82,7 @@ const fromJson = content => {
 
     const { name, pages } = object
 
-    const convertedPages = convertPages(pages)
+    const convertedPages = convertPages(pages, gitRepoInfo)
 
     const homePage = getHomePage(convertedPages)
 

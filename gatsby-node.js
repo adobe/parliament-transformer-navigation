@@ -41,10 +41,10 @@ const onCreateNode = async (
 
   switch (mediaType) {
     case "application/json":
-      parsedContent = fromJson(content)
+      parsedContent = fromJson(content, options.gitRepoInfo)
       break
     case "text/yaml":
-      parsedContent = fromYaml(content)
+      parsedContent = fromYaml(content, options.gitRepoInfo)
       break
   }
 
