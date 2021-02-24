@@ -20,7 +20,7 @@
  *
  * @returns {Object[]} A converted array
  */
-const { stripManifestPath } = require('./ManifestUtils')
+const stripManifestPath = require('./ManifestUtils')
 
 const convertPages = (pages, gitRepoInfo) => {
   if (pages === undefined) {
