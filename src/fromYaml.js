@@ -51,7 +51,7 @@ const convertPages = (pages, gitRepoInfo) => {
  */
 const getHomePage = pages => {
   let found = pages.find(page => {
-    return page.path !== undefined
+    return page.path !== undefined && page.path !== ''
   })
 
   if (!found) {
