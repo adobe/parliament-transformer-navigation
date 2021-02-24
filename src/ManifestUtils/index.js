@@ -32,4 +32,4 @@ function stripManifestPath(path, { org = '', name = '', branch = '' } = {}) {
   return '/' + splitPath.join('/')
 }
 
-module.exports = { stripManifestPath }
+module.exports = stripManifestPath

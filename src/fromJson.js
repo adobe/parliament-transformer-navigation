@@ -20,7 +20,7 @@
  *
  * @returns {Object[]} A converted array
  */
-const { stripManifestPath } = require('./ManifestUtils')
+const stripManifestPath = require('./ManifestUtils')
 
 const convertPages = (pages, gitRepoInfo) => {
   if (pages === undefined) {
@@ -48,7 +48,7 @@ const convertPages = (pages, gitRepoInfo) => {
  */
 const getHomePage = pages => {
   let found = pages.find(page => {
-    return page.path !== undefined
+    return page.path !== undefined && page.path !== ''
   })
 
   if (!found) {
