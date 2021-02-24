@@ -12,11 +12,18 @@ yarn add @adobe/parliament-transformer-navigation
 
 ```javascript
 // In your gatsby-config.js
+const gitInfo = GitUrlParse(process.env.GATSBY_SOURCE)
+const gitRepoInfo = {
+  org: gitInfo.owner,
+  name: gitInfo.name,
+  branch: process.env.GATSBY_SOURCE_BRANCH,
+}
 module.exports = {
   plugins: [
     {
       resolve: `@adobe/parliament-transformer-navigation`,
       options: {
+        gitRepoInfo: gitRepoInfo
       },
     },
   ],
