@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { stripManifestPath, defaultFocus } from '../index'
+import { stripManifestPath } from '../index'
 
 const manifest = {
   author: 'Nathan Price',
@@ -333,35 +333,5 @@ describe('stripManifestPath', () => {
         branch: 'master'
       })
     ).toEqual('/onboarding.md')
-  })
-})
-
-describe('defaultFocus', () => {
-  it('is truthy', () => {
-    expect(defaultFocus).toBeTruthy()
-  })
-  it('org/name/branch', () => {
-    const result = defaultFocus(
-      manifest,
-      'http:docs.corp.adobe.com/authentication/adobe-io/docs/reporting-api/index.md',
-      { org: 'AdobeDocs', name: 'analytics-1.4-apis', branch: 'master' }
-    )
-    expect(result === 'Reporting API').toBe(true)
-  })
-  it('org/name', () => {
-    const result = defaultFocus(
-      manifest,
-      'http:docs.corp.adobe.com/authentication/adobe-io/docs/docs/APIEOL.md',
-      { org: 'AdobeDocs', name: 'analytics-1.4-apis', branch: 'master' }
-    )
-    expect(result === 'Legacy 1.3 APIs').toBe(true)
-  })
-  it('deep in strucure', () => {
-    const result = defaultFocus(
-      manifest,
-      'http:docs.corp.adobe.com/authentication/adobe-io/docs/authentication/index.md',
-      { org: 'AdobeDocs', name: 'analytics-1.4-apis', branch: 'master' }
-    )
-    expect(result === 'Legacy Authentication').toBe(true)
   })
 })

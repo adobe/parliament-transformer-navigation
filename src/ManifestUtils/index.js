@@ -32,38 +32,4 @@ function stripManifestPath(path, { org = '', name = '', branch = '' } = {}) {
   return '/' + splitPath.join('/')
 }
 
-function defaultFocus(theObject, selected, urlPrefix) {
-  var result = null
-  if (theObject instanceof Array) {
-    for (var i = 0; i < theObject.length; i++) {
-      result = defaultFocus(theObject[i], selected, urlPrefix)
-      if (result) {
-        break
-      }
-    }
-  } else {
-    for (var prop in theObject) {
-      if (prop === 'path') {
-        const updatedPath = stripManifestPath(theObject[prop], urlPrefix)
-        if (
-          updatedPath &&
-          selected.toLowerCase().endsWith(updatedPath.toLowerCase())
-        ) {
-          return theObject.title
-        }
-      }
-      if (
-        theObject[prop] instanceof Object ||
-        theObject[prop] instanceof Array
-      ) {
-        result = defaultFocus(theObject[prop], selected, urlPrefix)
-        if (result) {
-          break
-        }
-      }
-    }
-  }
-  return result
-}
-
-module.exports = { stripManifestPath, defaultFocus }
+module.exports = { stripManifestPath }
