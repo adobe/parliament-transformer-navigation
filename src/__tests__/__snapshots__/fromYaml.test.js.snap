@@ -39,6 +39,33 @@ Object {
     },
   ],
   "section": "section-1",
+  "tabs": Array [],
+  "title": "About",
+}
+`;
+
+exports[`Valid navigation yaml format with tabs 1`] = `
+Object {
+  "homePage": "/",
+  "order": 1,
+  "pages": Array [
+    Object {
+      "pages": Array [],
+      "path": "/",
+      "title": "Home",
+    },
+  ],
+  "section": "section-1",
+  "tabs": Array [
+    Object {
+      "path": "/foo/",
+      "title": "foo",
+    },
+    Object {
+      "path": "/foo/bar/",
+      "title": "bar",
+    },
+  ],
   "title": "About",
 }
 `;
@@ -82,6 +109,7 @@ Object {
     },
   ],
   "section": "section-1",
+  "tabs": Array [],
   "title": "About",
 }
 `;

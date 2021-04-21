@@ -73,6 +73,27 @@ pages:
   expect(parsedContent).toMatchSnapshot()
 })
 
+test("Valid navigation yaml format with tabs", () => {
+  const fileContent = `
+type: navigation
+order: 1
+title: About
+name: section-1
+pages:
+  - title: Home
+    url: /
+tabs:
+  - title: foo
+    url: /foo/
+
+  - title: bar
+    url: /foo/bar/
+`
+  const parsedContent = fromYaml(fileContent)
+
+  expect(parsedContent).toMatchSnapshot()
+})
+
 test("Valid yaml but not navigation file", () => {
   const fileContent = `
 name: Yaml file
