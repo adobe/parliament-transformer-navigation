@@ -40,6 +40,30 @@ const convertPages = (pages, gitRepoInfo) => {
   return convertedPages
 }
 
+/**
+ * Converts an array of navigation tab objects into a standard
+ * format for a parliamentNavigation GraphQL node object.
+ *
+ * @param {Object[]} tabs
+ *
+ * @returns {Object[]} A converted array
+ */
+const convertTabs = (tabs, gitRepoInfo) => {
+  if (tabs === undefined) {
+    return []
+  }
+  const convertedTabs = tabs.map((tab) => {
+    const { title, url } = tab
+
+    return {
+      title: title,
+      path: stripManifestPath(url, gitRepoInfo)
+    }
+  })
+
+  return convertedTabs
+}
+
 
 /**
  * Get the first defined path from a navigation tree structure.
@@ -82,8 +106,9 @@ const fromYaml = (content, gitRepoInfo) => {
       return
     }
 
-    const { order, title, name, url, pages } = object
+    const { order, title, name, url, pages, tabs } = object
     const convertedPages = convertPages(pages, gitRepoInfo)
+    const convertedTabs = convertTabs(tabs, gitRepoInfo)
 
     let homePage = url
     if (!homePage || homePage === undefined || homePage === '/') {
@@ -96,6 +121,7 @@ const fromYaml = (content, gitRepoInfo) => {
       homePage: homePage,
       order: order,
       pages: convertedPages,
+      tabs: convertedTabs,
     }
   } catch (error) {
     //We should probably do something with the error

@@ -39,6 +39,29 @@ const convertPages = (pages, gitRepoInfo) => {
 }
 
 /**
+ * Converts an array of manifest-docs.json tab objects into a standard
+ * format for a parliamentNavigation GraphQL node object.
+ *
+ * @param {Object[]} tabs
+ *
+ * @returns {Object[]} A converted array
+ */
+const convertTabs = (tabs, gitRepoInfo) => {
+  if (tabs === undefined) {
+    return []
+  }
+
+  const convertedTabs = tabs.map(tab => {
+    return {
+      title: tab.title,
+      path: stripManifestPath(tab.path, gitRepoInfo),
+    }
+  })
+
+  return convertedTabs
+}
+
+/**
  * Get the first defined path from a navigation tree structure.
  * This search is breadth first.
  *
@@ -80,9 +103,10 @@ const fromJson = (content, gitRepoInfo) => {
       return
     }
 
-    const { name, pages } = object
+    const { name, pages, tabs } = object
 
     const convertedPages = convertPages(pages, gitRepoInfo)
+    const convertedTabs = convertTabs(tabs, gitRepoInfo)
 
     const homePage = getHomePage(convertedPages)
 
@@ -92,6 +116,7 @@ const fromJson = (content, gitRepoInfo) => {
       order: 0,
       pages: convertedPages,
       homePage: homePage,
+      tabs: convertedTabs,
     }
   } catch (error) {
     // We should probably do something with this error
