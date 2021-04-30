@@ -20,14 +20,14 @@
  *
  * @returns {Object[]} A converted array
  */
-const stripManifestPath = require('./ManifestUtils')
+const stripManifestPath = require("./ManifestUtils")
 
 const convertPages = (pages, gitRepoInfo) => {
   if (pages === undefined) {
     return []
   }
 
-  const convertedPages = pages.map(page => {
+  const convertedPages = pages.map((page) => {
     return {
       title: page.title,
       path: stripManifestPath(page.path, gitRepoInfo),
@@ -51,7 +51,7 @@ const convertTabs = (tabs, gitRepoInfo) => {
     return []
   }
 
-  const convertedTabs = tabs.map(tab => {
+  const convertedTabs = tabs.map((tab) => {
     return {
       title: tab.title,
       path: stripManifestPath(tab.path, gitRepoInfo),
@@ -69,13 +69,13 @@ const convertTabs = (tabs, gitRepoInfo) => {
  *
  * @returns {String} The first defined path value encountered.
  */
-const getHomePage = pages => {
-  let found = pages.find(page => {
-    return page.path !== undefined && page.path !== ''
+const getHomePage = (pages) => {
+  let found = pages.find((page) => {
+    return page.path !== undefined && page.path !== ""
   })
 
   if (!found) {
-    pages.some(page => {
+    pages.some((page) => {
       found = getHomePage(page.pages)
       return found
     })
@@ -103,7 +103,7 @@ const fromJson = (content, gitRepoInfo) => {
       return
     }
 
-    const { name, pages, tabs } = object
+    const { name, pages, tabs, issues = null } = object
 
     const convertedPages = convertPages(pages, gitRepoInfo)
     const convertedTabs = convertTabs(tabs, gitRepoInfo)
@@ -114,6 +114,7 @@ const fromJson = (content, gitRepoInfo) => {
       section: name,
       title: name,
       order: 0,
+      issues: issues,
       pages: convertedPages,
       homePage: homePage,
       tabs: convertedTabs,

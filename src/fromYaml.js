@@ -9,7 +9,7 @@
  *  OF ANY KIND, either express or implied. See the License for the specific language
  *  governing permissions and limitations under the License.
  */
-const stripManifestPath = require('./ManifestUtils')
+const stripManifestPath = require("./ManifestUtils")
 
 const yamlParser = require("yaml")
 
@@ -57,13 +57,12 @@ const convertTabs = (tabs, gitRepoInfo) => {
 
     return {
       title: title,
-      path: stripManifestPath(url, gitRepoInfo)
+      path: stripManifestPath(url, gitRepoInfo),
     }
   })
 
   return convertedTabs
 }
-
 
 /**
  * Get the first defined path from a navigation tree structure.
@@ -73,13 +72,13 @@ const convertTabs = (tabs, gitRepoInfo) => {
  *
  * @returns {String} The first defined path value encountered.
  */
-const getHomePage = pages => {
-  let found = pages.find(page => {
-    return page.path !== undefined && page.path !== ''
+const getHomePage = (pages) => {
+  let found = pages.find((page) => {
+    return page.path !== undefined && page.path !== ""
   })
 
   if (!found) {
-    pages.some(page => {
+    pages.some((page) => {
       found = getHomePage(page.pages)
       return found
     })
@@ -106,20 +105,21 @@ const fromYaml = (content, gitRepoInfo) => {
       return
     }
 
-    const { order, title, name, url, pages, tabs } = object
+    const { order, title, name, url, pages, tabs, issues = null } = object
     const convertedPages = convertPages(pages, gitRepoInfo)
     const convertedTabs = convertTabs(tabs, gitRepoInfo)
 
     let homePage = url
-    if (!homePage || homePage === undefined || homePage === '/') {
+    if (!homePage || homePage === undefined || homePage === "/") {
       homePage = getHomePage(convertedPages)
     }
-    
+
     return {
       section: name,
       title: title,
       homePage: homePage,
       order: order,
+      issues: issues,
       pages: convertedPages,
       tabs: convertedTabs,
     }

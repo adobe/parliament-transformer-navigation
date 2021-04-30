@@ -1,8 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`manifest with issues 1`] = `
+Object {
+  "homePage": "DevRel/parliament-docs/master/README.md",
+  "issues": "https://github.com/adobe/parliament-transformer-navigation/issues",
+  "order": 0,
+  "pages": Array [
+    Object {
+      "pages": Array [],
+      "path": "DevRel/parliament-docs/master/README.md",
+      "title": "Overview",
+    },
+  ],
+  "section": "Parliament Site",
+  "tabs": Array [
+    Object {
+      "path": "foo/",
+      "title": "foo",
+    },
+    Object {
+      "path": "foo/bar",
+      "title": "bar",
+    },
+  ],
+  "title": "Parliament Site",
+}
+`;
+
 exports[`manifest with tabs 1`] = `
 Object {
   "homePage": "DevRel/parliament-docs/master/README.md",
+  "issues": null,
+  "order": 0,
+  "pages": Array [
+    Object {
+      "pages": Array [],
+      "path": "DevRel/parliament-docs/master/README.md",
+      "title": "Overview",
+    },
+  ],
+  "section": "Parliament Site",
+  "tabs": Array [
+    Object {
+      "path": "foo/",
+      "title": "foo",
+    },
+    Object {
+      "path": "foo/bar",
+      "title": "bar",
+    },
+  ],
+  "title": "Parliament Site",
+}
+`;
+
+exports[`manifest without issues 1`] = `
+Object {
+  "homePage": "DevRel/parliament-docs/master/README.md",
+  "issues": null,
   "order": 0,
   "pages": Array [
     Object {
@@ -29,6 +84,7 @@ Object {
 exports[`manifest-docs.json content 1`] = `
 Object {
   "homePage": "DevRel/parliament-docs/master/README.md",
+  "issues": null,
   "order": 0,
   "pages": Array [
     Object {
@@ -57,6 +113,7 @@ Object {
 exports[`missing pages property 1`] = `
 Object {
   "homePage": "DevRel/parliament-docs/master/README.md",
+  "issues": null,
   "order": 0,
   "pages": Array [
     Object {
