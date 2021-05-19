@@ -9,27 +9,31 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
-function stripManifestPath(path, { org = '', name = '', branch = '' } = {}) {
+function stripManifestPath(path, { org = "", name = "", branch = "" } = {}) {
   if (!path) {
-    return ''
+    return ""
   }
   if (
-    path.startsWith('http://') ||
-    path.startsWith('https://') ||
-    (org === '' && name === '' && branch === '')
+    path.startsWith("http://") ||
+    path.startsWith("https://") ||
+    (org === "" && name === "" && branch === "")
   ) {
     return path
   }
   const prefix = [org, name, branch]
-  const splitPath = path.split('/').filter((item) => item !== '')
+  const splitPath = path.split("/").filter((item) => item !== "")
 
-  prefix.map((item) => {
-    if (item.toLocaleLowerCase() === splitPath[0].toLocaleLowerCase()) {
-      splitPath.shift()
-    }
-  })
-
-  return '/' + splitPath.join('/')
+  if (
+    splitPath.includes(org.toLocaleLowerCase()) ||
+    splitPath.includes(name.toLocaleLowerCase())
+  ) {
+    prefix.map((item) => {
+      if (item.toLocaleLowerCase() === splitPath[0].toLocaleLowerCase()) {
+        splitPath.shift()
+      }
+    })
+  }
+  return "/" + splitPath.join("/")
 }
 
 module.exports = stripManifestPath
