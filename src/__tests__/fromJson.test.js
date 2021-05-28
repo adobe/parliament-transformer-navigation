@@ -16,21 +16,11 @@ test("manifest-docs.json content", () => {
   const fileContent = `
 {
   "name": "Parliament Site",
-  "version": "1.0.0",
-  "description": "Onboarding docs for Parliament",
-  "author": "DevRel Team",
   "view_type": "mdbook",
-  "meta_keywords": "adobe, parliament",
-  "meta_description": "default description",
-  "publish_date": "30/08/2018",
-  "show_edit_github_banner": false,
-  "base_path": "https://raw.githubusercontent.com",
   "pages": [
     {
-      "importedFileName": "readme",
       "pages": [
         {
-          "importedFileName": "onboarding",
           "pages": [],
           "path": "DevRel/parliament-docs/master/onboarding.md",
           "title": "Onboarding"
@@ -40,7 +30,6 @@ test("manifest-docs.json content", () => {
       "title": "Overview"
     },
     {
-      "importedFileName": "contributing",
       "pages": [
       ],
       "path": "DevRel/parliament-docs/master/.github/CONTRIBUTING.md",
@@ -58,21 +47,11 @@ test("missing pages property", () => {
   const fileContent = `
 {
   "name": "Parliament Site",
-  "version": "1.0.0",
-  "description": "Onboarding docs for Parliament",
-  "author": "DevRel Team",
   "view_type": "mdbook",
-  "meta_keywords": "adobe, parliament",
-  "meta_description": "default description",
-  "publish_date": "30/08/2018",
-  "show_edit_github_banner": false,
-  "base_path": "https://raw.githubusercontent.com",
   "pages": [
     {
-      "importedFileName": "readme",
       "pages": [
         {
-          "importedFileName": "onboarding",
           "path": "DevRel/parliament-docs/master/onboarding.md",
           "title": "Onboarding"
         }
@@ -81,7 +60,6 @@ test("missing pages property", () => {
       "title": "Overview"
     },
     {
-      "importedFileName": "contributing",
       "path": "DevRel/parliament-docs/master/.github/CONTRIBUTING.md",
       "title": "Contributing"
     }
@@ -158,18 +136,9 @@ test("manifest with tabs", () => {
   const fileContent = `
 {
   "name": "Parliament Site",
-  "version": "1.0.0",
-  "description": "Onboarding docs for Parliament",
-  "author": "DevRel Team",
   "view_type": "mdbook",
-  "meta_keywords": "adobe, parliament",
-  "meta_description": "default description",
-  "publish_date": "30/08/2018",
-  "show_edit_github_banner": false,
-  "base_path": "https://raw.githubusercontent.com",
   "pages": [
     {
-      "importedFileName": "readme",
       "pages": [],
       "path": "DevRel/parliament-docs/master/README.md",
       "title": "Overview"
@@ -196,18 +165,9 @@ test("manifest without issues", () => {
   const fileContent = `
 {
   "name": "Parliament Site",
-  "version": "1.0.0",
-  "description": "Onboarding docs for Parliament",
-  "author": "DevRel Team",
   "view_type": "mdbook",
-  "meta_keywords": "adobe, parliament",
-  "meta_description": "default description",
-  "publish_date": "30/08/2018",
-  "show_edit_github_banner": false,
-  "base_path": "https://raw.githubusercontent.com",
   "pages": [
     {
-      "importedFileName": "readme",
       "pages": [],
       "path": "DevRel/parliament-docs/master/README.md",
       "title": "Overview"
@@ -234,19 +194,10 @@ test("manifest with issues", () => {
   const fileContent = `
 {
   "name": "Parliament Site",
-  "version": "1.0.0",
-  "description": "Onboarding docs for Parliament",
-  "author": "DevRel Team",
   "view_type": "mdbook",
-  "meta_keywords": "adobe, parliament",
-  "meta_description": "default description",
-  "publish_date": "30/08/2018",
-  "show_edit_github_banner": false,
-  "base_path": "https://raw.githubusercontent.com",
   "issues": "https://github.com/adobe/parliament-transformer-navigation/issues",
   "pages": [
     {
-      "importedFileName": "readme",
       "pages": [],
       "path": "DevRel/parliament-docs/master/README.md",
       "title": "Overview"
