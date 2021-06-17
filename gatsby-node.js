@@ -12,7 +12,7 @@
 
 const fromJson = require("./src/fromJson")
 const fromYaml = require("./src/fromYaml")
-const reduceGraphQLToJson = require("./src/utils")
+const { reduceGraphQLToJson } = require("./src/utils")
 
 /**
  * Callback for creating graphql nodes from project navigation files.

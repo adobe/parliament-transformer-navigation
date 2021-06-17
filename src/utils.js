@@ -12,6 +12,8 @@
 
 const { GraphQLJSON } = require("gatsby/graphql")
 
+const openApiEngineTypes = ["redoc", "swagger-ui"]
+
 const reduceGraphQLToJson = (nodes) => {
   return nodes
     .map(({ id, parent, children, internal, ...rest }) => Object.keys(rest))
@@ -19,4 +21,8 @@ const reduceGraphQLToJson = (nodes) => {
     .reduce((o, name) => ({ ...o, [name]: GraphQLJSON }), {})
 }
 
-module.exports = reduceGraphQLToJson
+const validateOpenApiEngine = (engine) => {
+  return openApiEngineTypes.includes(engine) ? engine : "redoc"
+}
+
+module.exports = { reduceGraphQLToJson, validateOpenApiEngine }
