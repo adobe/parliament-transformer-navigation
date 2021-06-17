@@ -10,7 +10,7 @@
  *  governing permissions and limitations under the License.
  */
 
-const reduceGraphQLToJson = require("../utils")
+const { reduceGraphQLToJson, validateOpenApiEngine } = require("../utils")
 
 test("Magento devdocs navigation format", () => {
   const nodes = [
@@ -197,4 +197,13 @@ test("manifest-docs.json format", () => {
   ]
 
   expect(reduceGraphQLToJson(nodes)).toMatchSnapshot()
+})
+
+test("manifest-docs.json format", () => {
+  expect(validateOpenApiEngine("redoc")).toEqual("redoc")
+  expect(validateOpenApiEngine("swagger-ui")).toEqual("swagger-ui")
+  expect(validateOpenApiEngine("foobar")).toEqual("redoc")
+  expect(validateOpenApiEngine("")).toEqual("redoc")
+  expect(validateOpenApiEngine(null)).toEqual("redoc")
+  expect(validateOpenApiEngine(undefined)).toEqual("redoc")
 })
