@@ -21,6 +21,7 @@
  * @returns {Object[]} A converted array
  */
 const stripManifestPath = require("./ManifestUtils")
+const { validateOpenApiEngine } = require("./utils")
 
 const convertPages = (pages, gitRepoInfo) => {
   if (pages === undefined) {
@@ -103,7 +104,7 @@ const fromJson = (content, gitRepoInfo) => {
       return
     }
 
-    const { name, pages, tabs, issues = null } = object
+    const { name, pages, tabs, issues = null, openApiEngine = "redoc" } = object
 
     const convertedPages = convertPages(pages, gitRepoInfo)
     const convertedTabs = convertTabs(tabs, gitRepoInfo)
@@ -118,6 +119,7 @@ const fromJson = (content, gitRepoInfo) => {
       pages: convertedPages,
       homePage: homePage,
       tabs: convertedTabs,
+      openApiEngine: validateOpenApiEngine(openApiEngine),
     }
   } catch (error) {
     // We should probably do something with this error

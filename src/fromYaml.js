@@ -10,6 +10,7 @@
  *  governing permissions and limitations under the License.
  */
 const stripManifestPath = require("./ManifestUtils")
+const { validateOpenApiEngine } = require("./utils")
 
 const yamlParser = require("yaml")
 
@@ -105,7 +106,16 @@ const fromYaml = (content, gitRepoInfo) => {
       return
     }
 
-    const { order, title, name, url, pages, tabs, issues = null } = object
+    const {
+      order,
+      title,
+      name,
+      url,
+      pages,
+      tabs,
+      issues = null,
+      openApiEngine = "redoc",
+    } = object
     const convertedPages = convertPages(pages, gitRepoInfo)
     const convertedTabs = convertTabs(tabs, gitRepoInfo)
 
@@ -122,6 +132,7 @@ const fromYaml = (content, gitRepoInfo) => {
       issues: issues,
       pages: convertedPages,
       tabs: convertedTabs,
+      openApiEngine: validateOpenApiEngine(openApiEngine),
     }
   } catch (error) {
     //We should probably do something with the error
