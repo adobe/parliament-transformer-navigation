@@ -187,3 +187,65 @@ pages:
 
   expect(parsedContent).toMatchSnapshot()
 })
+
+test("Valid navigation yaml format with openApiEngine", () => {
+  const fileContent = `
+type: navigation
+order: 1
+title: About
+name: section-1
+openApiEngine: swagger-ui
+pages:
+  - title: Home
+    url: /
+
+  - title: Page 2
+    url: /page-2/
+    pages:
+      - title: Example
+        url: /example/
+        pages:
+          - title: Nest a page
+            url: /nested/page/
+
+  - title: Diagrams
+    url: /diagrams/
+
+  - title: Hello World
+    url: /hello/
+`
+  const parsedContent = fromYaml(fileContent)
+
+  expect(parsedContent).toMatchSnapshot()
+})
+
+test("Valid navigation yaml format with invalid openApiEngine", () => {
+  const fileContent = `
+type: navigation
+order: 1
+title: About
+name: section-1
+openApiEngine: foobar
+pages:
+  - title: Home
+    url: /
+
+  - title: Page 2
+    url: /page-2/
+    pages:
+      - title: Example
+        url: /example/
+        pages:
+          - title: Nest a page
+            url: /nested/page/
+
+  - title: Diagrams
+    url: /diagrams/
+
+  - title: Hello World
+    url: /hello/
+`
+  const parsedContent = fromYaml(fileContent)
+
+  expect(parsedContent).toMatchSnapshot()
+})

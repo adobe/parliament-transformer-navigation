@@ -4,6 +4,53 @@ exports[`Magento devdocs navigation format 1`] = `
 Object {
   "homePage": "/",
   "issues": null,
+  "openApiEngine": "redoc",
+  "order": 1,
+  "pages": Array [
+    Object {
+      "pages": Array [],
+      "path": "/",
+      "title": "Home",
+    },
+    Object {
+      "pages": Array [
+        Object {
+          "pages": Array [
+            Object {
+              "pages": Array [],
+              "path": "/nested/page/",
+              "title": "Nest a page",
+            },
+          ],
+          "path": "/example/",
+          "title": "Example",
+        },
+      ],
+      "path": "/page-2/",
+      "title": "Page 2",
+    },
+    Object {
+      "pages": Array [],
+      "path": "/diagrams/",
+      "title": "Diagrams",
+    },
+    Object {
+      "pages": Array [],
+      "path": "/hello/",
+      "title": "Hello World",
+    },
+  ],
+  "section": "section-1",
+  "tabs": Array [],
+  "title": "About",
+}
+`;
+
+exports[`Valid navigation yaml format with invalid openApiEngine 1`] = `
+Object {
+  "homePage": "/",
+  "issues": null,
+  "openApiEngine": "redoc",
   "order": 1,
   "pages": Array [
     Object {
@@ -49,6 +96,53 @@ exports[`Valid navigation yaml format with issues 1`] = `
 Object {
   "homePage": "/",
   "issues": "https://github.com/adobe/parliament-transformer-navigation/issues",
+  "openApiEngine": "redoc",
+  "order": 1,
+  "pages": Array [
+    Object {
+      "pages": Array [],
+      "path": "/",
+      "title": "Home",
+    },
+    Object {
+      "pages": Array [
+        Object {
+          "pages": Array [
+            Object {
+              "pages": Array [],
+              "path": "/nested/page/",
+              "title": "Nest a page",
+            },
+          ],
+          "path": "/example/",
+          "title": "Example",
+        },
+      ],
+      "path": "/page-2/",
+      "title": "Page 2",
+    },
+    Object {
+      "pages": Array [],
+      "path": "/diagrams/",
+      "title": "Diagrams",
+    },
+    Object {
+      "pages": Array [],
+      "path": "/hello/",
+      "title": "Hello World",
+    },
+  ],
+  "section": "section-1",
+  "tabs": Array [],
+  "title": "About",
+}
+`;
+
+exports[`Valid navigation yaml format with openApiEngine 1`] = `
+Object {
+  "homePage": "/",
+  "issues": null,
+  "openApiEngine": "swagger-ui",
   "order": 1,
   "pages": Array [
     Object {
@@ -94,6 +188,7 @@ exports[`Valid navigation yaml format with tabs 1`] = `
 Object {
   "homePage": "/",
   "issues": null,
+  "openApiEngine": "redoc",
   "order": 1,
   "pages": Array [
     Object {
@@ -121,6 +216,7 @@ exports[`Valid navigation yaml format without homepage 1`] = `
 Object {
   "homePage": "/",
   "issues": null,
+  "openApiEngine": "redoc",
   "order": 1,
   "pages": Array [
     Object {
@@ -166,6 +262,7 @@ exports[`Valid navigation yaml format without issues 1`] = `
 Object {
   "homePage": "/",
   "issues": null,
+  "openApiEngine": "redoc",
   "order": 1,
   "pages": Array [
     Object {
