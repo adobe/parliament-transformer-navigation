@@ -201,9 +201,10 @@ test("manifest-docs.json format", () => {
 
 test("manifest-docs.json format", () => {
   expect(validateOpenApiEngine("redoc")).toEqual("redoc")
+  expect(validateOpenApiEngine("stoplight")).toEqual("stoplight")
   expect(validateOpenApiEngine("swagger-ui")).toEqual("swagger-ui")
-  expect(validateOpenApiEngine("foobar")).toEqual("redoc")
-  expect(validateOpenApiEngine("")).toEqual("redoc")
-  expect(validateOpenApiEngine(null)).toEqual("redoc")
-  expect(validateOpenApiEngine(undefined)).toEqual("redoc")
+  expect(validateOpenApiEngine("foobar")).toEqual("stoplight")
+  expect(validateOpenApiEngine("")).toEqual("stoplight")
+  expect(validateOpenApiEngine(null)).toEqual("stoplight")
+  expect(validateOpenApiEngine(undefined)).toEqual("stoplight")
 })

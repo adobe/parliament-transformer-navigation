@@ -12,7 +12,7 @@
 
 const { GraphQLJSON } = require("gatsby/graphql")
 
-const openApiEngineTypes = ["redoc", "swagger-ui"]
+const openApiEngineTypes = ["redoc", "swagger-ui", "stoplight"]
 
 const reduceGraphQLToJson = (nodes) => {
   return nodes
@@ -22,7 +22,7 @@ const reduceGraphQLToJson = (nodes) => {
 }
 
 const validateOpenApiEngine = (engine) => {
-  return openApiEngineTypes.includes(engine) ? engine : "redoc"
+  return openApiEngineTypes.includes(engine) ? engine : "stoplight"
 }
 
 module.exports = { reduceGraphQLToJson, validateOpenApiEngine }
