@@ -22,7 +22,7 @@ const reduceGraphQLToJson = (nodes) => {
 }
 
 const validateOpenApiEngine = (engine) => {
-  return openApiEngineTypes.includes(engine) ? engine : "stoplight"
+  return openApiEngineTypes.includes(engine) ? engine : "redoc"
 }
 
 module.exports = { reduceGraphQLToJson, validateOpenApiEngine }
