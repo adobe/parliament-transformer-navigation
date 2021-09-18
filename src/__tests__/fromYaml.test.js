@@ -51,22 +51,16 @@ title: About
 name: section-1
 pages:
   - title: Home
-    url: /
-
-  - title: Page 2
-    url: /page-2/
     pages:
       - title: Example
         url: /example/
         pages:
           - title: Nest a page
             url: /nested/page/
-
-  - title: Diagrams
-    url: /diagrams/
-
-  - title: Hello World
-    url: /hello/
+          - title: Diagrams
+            url: /diagrams/
+          - title: Hello World
+            url: /hello/
 `
   const parsedContent = fromYaml(fileContent)
 

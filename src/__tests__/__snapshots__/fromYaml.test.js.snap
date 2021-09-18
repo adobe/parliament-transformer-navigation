@@ -214,16 +214,11 @@ Object {
 
 exports[`Valid navigation yaml format without homepage 1`] = `
 Object {
-  "homePage": "/",
+  "homePage": "/example/",
   "issues": null,
   "openApiEngine": "redoc",
   "order": 1,
   "pages": Array [
-    Object {
-      "pages": Array [],
-      "path": "/",
-      "title": "Home",
-    },
     Object {
       "pages": Array [
         Object {
@@ -233,23 +228,23 @@ Object {
               "path": "/nested/page/",
               "title": "Nest a page",
             },
+            Object {
+              "pages": Array [],
+              "path": "/diagrams/",
+              "title": "Diagrams",
+            },
+            Object {
+              "pages": Array [],
+              "path": "/hello/",
+              "title": "Hello World",
+            },
           ],
           "path": "/example/",
           "title": "Example",
         },
       ],
-      "path": "/page-2/",
-      "title": "Page 2",
-    },
-    Object {
-      "pages": Array [],
-      "path": "/diagrams/",
-      "title": "Diagrams",
-    },
-    Object {
-      "pages": Array [],
-      "path": "/hello/",
-      "title": "Hello World",
+      "path": "",
+      "title": "Home",
     },
   ],
   "section": "section-1",

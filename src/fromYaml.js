@@ -78,11 +78,8 @@ const getHomePage = (pages) => {
     return page.path !== undefined && page.path !== ""
   })
 
-  if (!found) {
-    pages.some((page) => {
-      found = getHomePage(page.pages)
-      return found
-    })
+  if (!found && pages.length > 0) {
+    return getHomePage(pages[0].pages)
   }
 
   return found.path
