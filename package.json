@@ -1,6 +1,6 @@
 {
   "name": "@adobe/parliament-transformer-navigation",
-  "version": "1.4.0-beta.2",
+  "version": "1.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
